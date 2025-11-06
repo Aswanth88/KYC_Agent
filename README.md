@@ -102,7 +102,7 @@ It's built for businesses and financial institutions that require **secure onboa
 **DevOps**
 
 - Vercel — Frontend hosting  
-- Heroku / Railway — Backend hosting  
+- Heroku / Render — Backend hosting  
 - MongoDB Atlas — Database  
 - GitHub Actions — CI/CD  
 
@@ -322,6 +322,8 @@ See the [LICENSE](LICENSE) file for details.
 - [DeepFace](https://github.com/serengil/deepface)
 - [MongoDB Atlas](https://www.mongodb.com/atlas)
 - [Vercel](https://vercel.com/)
+- [Render](https://dashboard.render.com/)
+
 
 ---
 
