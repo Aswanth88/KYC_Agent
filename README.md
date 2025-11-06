@@ -1,356 +1,332 @@
-🚀 KYC Verification System
+```markdown
+# 🚀 KYC Verification System
 
-A full-stack Know Your Customer (KYC) verification system with facial recognition, document processing, and real-time identity verification.
+A full-stack **Know Your Customer (KYC)** verification platform with **facial recognition**, **document OCR**, and **real-time identity validation**.  
+The system enables secure onboarding and digital identity verification with role-based access and admin workflows.
 
-https://img.shields.io/badge/KYC-Verification-blue
-https://img.shields.io/badge/Backend-FastAPI-green
-https://img.shields.io/badge/Frontend-React-purple
-https://img.shields.io/badge/Database-MongoDB-green
-📋 Table of Contents
+[![KYC Verification](https://img.shields.io/badge/KYC-Verification-blue)](#)
+[![Backend: FastAPI](https://img.shields.io/badge/Backend-FastAPI-green)](https://fastapi.tiangolo.com/)
+[![Frontend: React](https://img.shields.io/badge/Frontend-React-purple)](https://react.dev/)
+[![Database: MongoDB](https://img.shields.io/badge/Database-MongoDB-green)](https://www.mongodb.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-    Features
+---
 
-    Tech Stack
+## 📋 Table of Contents
 
-    Project Structure
+- [Overview](#overview)
+- [✨ Features](#-features)
+- [🛠 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🚀 Quick Start](#-quick-start)
+- [⚙️ Environment Setup](#️-environment-setup)
+- [📚 API Documentation](#-api-documentation)
+- [🌐 Deployment](#-deployment)
+- [🐳 Docker Support](#-docker-support)
+- [🧪 Testing](#-testing)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [🆘 Support & Acknowledgments](#-support--acknowledgments)
 
-    Quick Start
+---
 
-    Installation
+## Overview
 
-    Environment Setup
+The **KYC Verification System** simplifies digital identity verification by combining:
 
-    API Documentation
+- **AI-based document parsing**
+- **Facial recognition**
+- **Liveness detection**
+- **Admin dashboards & audit trails**
 
-    Deployment
+It's built for businesses and financial institutions that require **secure onboarding and compliance-ready verification**.
 
-    Contributing
+---
 
-    License
+## ✨ Features
 
-✨ Features
-🔐 Authentication & Security
+### 🔐 Authentication & Security
 
-    JWT-based authentication
+- JWT-based authentication & session management  
+- Role-based access (Admin, User, Auditor)  
+- Secure password hashing with bcrypt  
+- CORS protection & HTTPS ready  
 
-    Role-based access control (Admin, User, Auditor)
+### 📄 Document Processing
 
-    Secure password hashing with bcrypt
+- OCR integration using **Tesseract** & **EasyOCR**  
+- AI-powered data extraction via **OpenRouter API**  
+- Multi-format support (images, PDFs, scanned docs)  
+- KYC document parsing (Aadhaar, PAN, business cards)
 
-    CORS protection
+### 👤 Identity Verification
 
-📄 Document Processing
+- Facial recognition with **DeepFace**  
+- Real-time webcam verification  
+- **MediaPipe**-based liveness detection  
+- Document face matching & biometric validation  
 
-    OCR Integration (Tesseract & EasyOCR)
+### 🏦 KYC Management
 
-    AI-Powered Extraction (OpenRouter API)
+- Digital KYC submission workflow  
+- Admin dashboard with application review  
+- Multi-level verification & approval process  
+- Application status tracking & audit trail  
 
-    Automatic lead information extraction from business cards
+### 📊 Dashboard & Analytics
 
-    KYC-specific data extraction (Aadhaar, PAN, etc.)
+- Real-time application statistics  
+- User management interface  
+- Verification success metrics  
 
-    Multi-format document support (Images, PDFs)
+---
 
-👤 Identity Verification
+## 🛠 Tech Stack
 
-    Facial Recognition with DeepFace
+**Backend**
 
-    Liveness Detection with MediaPipe
+- FastAPI (Python)
+- MongoDB Atlas
+- Uvicorn
+- DeepFace, OpenCV, MediaPipe, pytesseract
+- JWT, bcrypt
 
-    Real-time webcam verification
+**Frontend**
 
-    Document face matching
+- React 18 + TypeScript
+- Vite (build tool)
+- Tailwind CSS
+- Axios
+- React Router DOM
 
-    Biometric authentication
+**DevOps**
 
-🏦 KYC Management
+- Vercel — Frontend hosting  
+- Heroku / Railway — Backend hosting  
+- MongoDB Atlas — Database  
+- GitHub Actions — CI/CD  
 
-    Digital KYC form submission
+---
 
-    Admin dashboard for application review
+## 📁 Project Structure
 
-    Application status tracking
-
-    Audit trail for compliance
-
-    Multi-level verification process
-
-📊 Dashboard & Analytics
-
-    Real-time application statistics
-
-    User management interface
-
-    Verification success metrics
-
-    Administrative oversight
-
-🛠 Tech Stack
-Backend
-
-    FastAPI - Modern Python web framework
-
-    MongoDB - NoSQL database with Atlas
-
-    JWT - JSON Web Tokens for authentication
-
-    DeepFace - Facial recognition library
-
-    OpenCV - Computer vision
-
-    Pytesseract - OCR engine
-
-    MediaPipe - Liveness detection
-
-Frontend
-
-    React 18 - UI library
-
-    TypeScript - Type safety
-
-    Vite - Build tool and dev server
-
-    Tailwind CSS - Styling
-
-    Axios - HTTP client
-
-    React Router - Navigation
-
-DevOps & Deployment
-
-    Vercel - Frontend hosting
-
-    Heroku/Railway - Backend hosting
-
-    MongoDB Atlas - Cloud database
-
-    GitHub Actions - CI/CD
-
-📁 Project Structure
-text
-
+```
 kyc-project/
-├── backend/                 # FastAPI backend
-│   ├── kyc_app.py          # Main application
-│   ├── auth.py             # Authentication routes
-│   ├── kyc_routes.py       # KYC management routes
-│   ├── mongodb.py          # Database configuration
-│   ├── requirements.txt    # Python dependencies
-│   └── Procfile           # Heroku deployment
-├── frontend/               # React frontend
+├── backend/                  # FastAPI backend
+│   ├── app/
+│   │   ├── main.py           # Entry point
+│   │   ├── auth.py           # Auth & role management
+│   │   ├── kyc_routes.py     # KYC operations
+│   │   ├── mongodb.py        # DB config
+│   │   ├── models.py         # Pydantic models
+│   │   ├── services/         # OCR & Face recognition logic
+│   │   └── utils/            # Helper functions
+│   ├── requirements.txt
+│   ├── Procfile
+│   └── runtime.txt
+│
+├── frontend/                 # React frontend
 │   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── hooks/          # Custom hooks
-│   │   ├── pages/          # Route pages
-│   │   └── utils/          # Utility functions
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── pages/
+│   │   └── utils/
 │   ├── package.json
-│   ├── vite.config.ts
-│   └── vercel.json        # Vercel configuration
-├── .gitignore             # Git ignore rules
-└── README.md              # This file
+│   └── vite.config.ts
+│
+└── README.md
+```
 
-🚀 Quick Start
-Prerequisites
+---
 
-    Python 3.8+
+## 🚀 Quick Start
 
-    Node.js 16+
+### Prerequisites
 
-    MongoDB Atlas account
+- Python 3.8+
+- Node.js 16+
+- MongoDB Atlas account
+- (Optional) OpenRouter API key
 
-    OpenRouter API account (optional)
+### 1. Clone the Repository
 
-1. Clone the Repository
-bash
-
+```bash
 git clone https://github.com/YOUR_USERNAME/kyc-project.git
 cd kyc-project
+```
 
-2. Backend Setup
-bash
+### 2. Backend Setup
 
+```bash
 cd backend
-
-# Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
+source venv/bin/activate   # (Windows: venv\Scripts\activate)
 pip install -r requirements.txt
+cp .env.example .env       # then edit your credentials
+uvicorn app.main:app --reload
+```
 
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your credentials
+### 3. Frontend Setup
 
-3. Frontend Setup
-bash
-
-cd frontend
-
-# Install dependencies
+```bash
+cd ../frontend
 npm install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your API URL
-
-4. Run the Application
-bash
-
-# Terminal 1 - Backend (from backend/)
-uvicorn kyc_app:app --host 0.0.0.0 --port 8000 --reload
-
-# Terminal 2 - Frontend (from frontend/)
+cp .env.example .env       # add your backend API URL
 npm run dev
+```
 
-Visit: http://localhost:5173
-⚙️ Environment Setup
-Backend Environment (.env)
-env
+Visit your app → **[http://localhost:5173](http://localhost:5173)**
 
+---
+
+## ⚙️ Environment Setup
+
+### Backend `.env`
+
+```env
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/kyc_database
 DATABASE_NAME=kyc_database
-SECRET_KEY=your-super-secret-key-here
+SECRET_KEY=your-super-secret-key
 ALGORITHM=HS256
-OPENROUTER_API_KEY=your-openrouter-api-key-optional
+OPENROUTER_API_KEY=optional
+```
 
-Frontend Environment (.env)
-env
+### Frontend `.env`
 
+```env
 VITE_API_BASE_URL=http://localhost:8000
+```
 
-📚 API Documentation
+---
 
-Once the backend is running, access the interactive API docs:
+## 📚 API Documentation
 
-    Swagger UI: http://localhost:8000/docs
+Once backend is running:
 
-    ReDoc: http://localhost:8000/redoc
+- Swagger UI → [http://localhost:8000/docs](http://localhost:8000/docs)
+- ReDoc → [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
-Key Endpoints
-Method	Endpoint	Description	Auth Required
-POST	/auth/login	User login	No
-POST	/auth/register	User registration	No
-POST	/verify	Face verification	Yes
-POST	/liveness-webcam	Liveness detection	Yes
-POST	/ocr	Document OCR	Yes
-POST	/extract-leads	Business card processing	Yes
-POST	/extract-kyc-data	KYC document processing	Yes
-GET	/kyc/all	Get all KYC apps (Admin)	Yes
-POST	/kyc/submit	Submit KYC application	Yes
-🎯 Demo Accounts
-Role	Email	Password	Access
-Admin	admin@finance.com	admin123	Full access
-User	user@finance.com	user123	Basic features
-Auditor	auditor@finance.com	auditor123	Read-only access
-🌐 Deployment
-Frontend (Vercel)
-bash
+| Method | Endpoint          | Description               | 
+| ------ | ----------------- | ------------------------- | --
+| POST   | /auth/register    | Register a user           | 
+| POST   | /auth/login       | Login & JWT               | 
+| POST   | /verify           | Face verification         | 
+| POST   | /ocr              | OCR & document processing | 
+| POST   | /extract-kyc-data | Extract KYC details       | 
+| POST   | /kyc/submit       | Submit application        | 
+| GET    | /kyc/all          | View all KYC apps (Admin) | 
 
+---
+
+## 🌐 Deployment
+
+### 🔹 Frontend (Vercel)
+
+```bash
 cd frontend
 npm run build
 vercel --prod
+```
 
-Backend (Heroku)
-bash
+### 🔹 Backend (Heroku)
 
+```bash
 cd backend
-heroku create your-kyc-backend
+heroku create kyc-backend-app
 git add .
-git commit -m "Deploy to Heroku"
-git push heroku main
+git commit -m "Deploy backend"
+git subtree push --prefix backend heroku main
+```
 
-Backend (Railway - Alternative)
-bash
+> Configure environment variables (`MONGODB_URI`, `SECRET_KEY`, etc.) in Heroku Dashboard.
 
-cd backend
-railway login
-railway init
-railway up
+---
 
-🐳 Docker Support (Optional)
-Backend Dockerfile
-dockerfile
+## 🐳 Docker Support
 
+**Backend `Dockerfile`**
+
+```dockerfile
 FROM python:3.11-slim
-
 WORKDIR /app
-
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-
 COPY . .
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
 
-CMD ["uvicorn", "kyc_app:app", "--host", "0.0.0.0", "--port", "8000"]
+**Frontend `Dockerfile`**
 
-Frontend Dockerfile
-dockerfile
-
+```dockerfile
 FROM node:18-alpine
-
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm install
-
 COPY . .
 RUN npm run build
-
 EXPOSE 5173
+CMD ["npm", "run", "preview", "--", "--host"]
+```
 
-CMD ["npm", "run", "dev", "--", "--host"]
+---
 
-🧪 Testing
-Backend Tests
-bash
+## 🧪 Testing
 
+**Backend**
+
+```bash
 cd backend
-pytest tests/
+pytest
+```
 
-Frontend Tests
-bash
+**Frontend**
 
+```bash
 cd frontend
 npm test
+```
 
-🤝 Contributing
+---
 
-We welcome contributions! Please see our Contributing Guidelines for details.
+## 🤝 Contributing
 
-    Fork the repository
+Contributions are welcome 💡
 
-    Create a feature branch (git checkout -b feature/amazing-feature)
+1. Fork the repo
+2. Create a new branch: `git checkout -b feature/my-feature`
+3. Commit: `git commit -m "Add my feature"`
+4. Push: `git push origin feature/my-feature`
+5. Open a Pull Request
 
-    Commit your changes (git commit -m 'Add amazing feature')
+---
 
-    Push to the branch (git push origin feature/amazing-feature)
+## 📄 License
 
-    Open a Pull Request
+Licensed under the **MIT License**.
 
-📄 License
+See the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-🆘 Support
+---
 
-    📧 Email: support@kycapp.com
+## 🆘 Acknowledgments
 
-    🐛 Issues: GitHub Issues
 
-    💬 Discussions: GitHub Discussions
+**Acknowledgments**
 
-🙏 Acknowledgments
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [DeepFace](https://github.com/serengil/deepface)
+- [MongoDB Atlas](https://www.mongodb.com/atlas)
+- [Vercel](https://vercel.com/)
 
-    FastAPI for the excellent web framework
-
-    DeepFace for facial recognition
-
-    MongoDB for database services
-
-    Vercel for frontend hosting
+---
 
 <div align="center">
 
-Built with ❤️ for secure digital identity verification
+### 💙 Built with passion for secure digital identity verification
 
-Report Bug · Request Feature
+⭐ **Star** this repo if you find it helpful!
+
+[Report Bug](../../issues) · [Request Feature](../../issues)
+
 </div>
+```
