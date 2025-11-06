@@ -122,8 +122,8 @@ kyc-project/
 │   │   ├── services/         # OCR & Face recognition logic
 │   │   └── utils/            # Helper functions
 │   ├── requirements.txt
-│   ├── Procfile
-│   └── runtime.txt
+│   
+│   
 │
 ├── frontend/                 # React frontend
 │   ├── src/
@@ -228,17 +228,22 @@ npm run build
 vercel --prod
 ```
 
-### 🔹 Backend (Heroku)
+### 🔹 Backend — Render
 
-```bash
-cd backend
-heroku create kyc-backend-app
-git add .
-git commit -m "Deploy backend"
-git subtree push --prefix backend heroku main
-```
+This section explains how to deploy the FastAPI backend of the KYC Verification System to Render.
 
-> Configure environment variables (`MONGODB_URI`, `SECRET_KEY`, etc.) in Heroku Dashboard.
+🪄 Prerequisites
+
+A GitHub repository containing both frontend/ and backend/ folders.
+
+The backend must include:
+
+app.py (FastAPI entry point)
+
+requirements.txt
+
+A working virtual environment (for local development)
+
 
 ---
 
