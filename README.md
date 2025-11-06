@@ -1,4 +1,4 @@
-```markdown
+markdown
 # 🚀 KYC Verification System
 
 A full-stack **Know Your Customer (KYC)** verification platform with **facial recognition**, **document OCR**, and **real-time identity validation**.  
@@ -106,7 +106,7 @@ It's built for businesses and financial institutions that require **secure onboa
 - MongoDB Atlas — Database  
 - GitHub Actions — CI/CD  
 
----
+
 
 ## 📁 Project Structure
 
